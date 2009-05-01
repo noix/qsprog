@@ -1,17 +1,21 @@
 <div class="couleur">
 	<div class="boite">
 		<div id="intro">
-			<? if ($surtitreEntete): ?><h3><?= $surtitreEntete ?></h3><? endif; ?>
-			<? if ($titreEntete): ?><h2><?= $titreEntete ?></h2><? endif; ?>
+			<? if ($afficherEtape): ?>
+			<? $etapes = Module::GetNewModule('fleche', $etape) ?>
+			<? $etapes->Display() ?>
+			<? endif; ?>
+
+			<? if ($titre): ?><h2><?= $titre ?></h2><? endif; ?>
 			<? if ($afficherVideo): ?>
 			<div class="themes">
-				<? if ($introEntete): ?><p class="themes"><?= $introEntete ?></p><? endif; ?>
+				<? if ($intro): ?><p class="themes"><?= $intro ?></p><? endif; ?>
 				<div class="video themes">
 					<div id="videotheme"></div>
 				</div>
 			</div>
 			<? else: ?>
-				<? if ($introEntete): ?><?= $introEntete ?><? endif; ?>
+				<? if ($intro): ?><p><?= $intro ?></p><? endif; ?>
 			<? endif; ?>
 		</div>
 		
@@ -23,21 +27,10 @@
 		</div>
 		<? endif; ?>
 
-		<? if ($afficherEtape): ?>
-		<? $etapes = Module::GetNewModule('fleche', $etape) ?>
-		<? $etapes->Display() ?>
-		<? endif; ?>
 		<div class="clear">&nbsp;</div>
 	</div>
 </div>
 
-<? if ($titreCorps): ?>
-<div id="titre">
-	<div class="boite">
-		<h2><?= $titreCorps ?></h2>
-	</div>
-</div>
-<? endif; ?>
 <div class="navigation">
 	<div class="boite">
 		<?= $body ?>

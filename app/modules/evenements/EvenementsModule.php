@@ -7,7 +7,7 @@ class EvenementsModule extends Module {
 		if ($this->item['plusieursJours']) {
 			$date = $this->item['date']->DateRange($this->item['duree']);
 		} else {
-			$date = $this->item['date']->SmartDate();
+			$date = $this->item['date']->SmartDateAndTime();
 		}
 		$dateString = e('p', $date);
 		$lieuString = e('p', $this->item['lieu']);
@@ -15,13 +15,13 @@ class EvenementsModule extends Module {
 		$introString = $detailsString . $this->item['description'];
 		
 		$templateVariables = array(
-			'enteteSurtitre' => 'Événements',
-			'enteteTitre' => $this->item['titre'],
-			'intro' => $introString,
+			'surtitreEntete' => 'Événements',
+			'titreEntete' => $this->item['titre'],
+			'introEntete' => $introString,
 			'afficherEtape' => true,
 			'etape' => 2
 		);
-		$this->template->AddVariables($templateVariables);
+		$this->layout->AddVariables($templateVariables);
 	}
 	
 	function HomeViewController() {

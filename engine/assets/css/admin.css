@@ -171,6 +171,7 @@ ul#menu a:hover, ul#menu li.current a:hover {
 
 ul#menu li.current a {
 	color: white;
+	margin-right: -9px;
 	background: #a9aba0 url("arrowMask.png") no-repeat center right;
 }
 
