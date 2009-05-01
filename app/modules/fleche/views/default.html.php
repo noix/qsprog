@@ -1,11 +1,11 @@
-<ul id="etapes"<?= $etape ? ' class="etape'. $etape .'"' : '' ?>>
+<ul id="etapes"<?= $etape ? ' class="mini etape'. $etape .'"' : '' ?>>
 	<li id="etape1"<?= $etape == 1 ? ' class="selected"' : '' ?>>
 		<div class="digit">
 			<span>1</span>
 		</div>
 		<div class="description">
 			<?= a('reflechir', 'Réfléchir') ?>
-			<p>S'informer sur les thèmes</p>
+			<? if (!$etape): ?><p>S'informer sur les thèmes</p><? endif; ?>
 		</div>
 	</li>
 	<li id="etape2"<?= $etape == 2 ? ' class="selected"' : '' ?>>
@@ -14,7 +14,7 @@
 		</div>
 		<div class="description">
 			<?= a('echanger', 'Échanger') ?>
-			<p>Participer aux débats</p>
+			<? if (!$etape): ?><p>Participer aux débats</p><? endif; ?>
 		</div>
 	</li>
 	<li id="etape3"<?= $etape == 3 ? ' class="selected"' : '' ?>>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="description">
 			<?= a('contribuer', 'Contribuer') ?>
-			<p>Remplir le formulaire</p>
+			<? if (!$etape): ?><p>Remplir le formulaire</p><? endif; ?>
 		</div>
 	</li>
 </ul>

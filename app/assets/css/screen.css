@@ -301,6 +301,7 @@ div.couleur h3, div#titre h3 {
 	color: #767f50;
 }
 div.couleur h2 {
+	clear: both;
 	margin-bottom: 0.66em;
  	font-family: georgia, verdana, "times new roman";
 	font-size: 1.92em;
@@ -415,7 +416,43 @@ div.couleur div.boite dl.contributions dt {
 		background-repeat: no-repeat;
 		background-position: bottom right;
 	}
+	
+	ul#etapes.mini {
+		margin: 0.5em 0 1.5em;
+		width: auto;
+	}
+	
+	ul#etapes.mini li {
+		width: auto;
+	}
+	
+	ul#etapes.mini div.digit {
+		font-size: 2em;
+		padding: 0.25em 0 0.18em 0em;
+	}
+	
+	ul#etapes.mini li#etape1 div.digit {
+		padding-left: 0.4em;
+	}
 
+	ul#etapes.mini li#etape2 div.digit,
+	ul#etapes.mini li#etape3 div.digit {
+		padding-left: 0.3em;
+	}
+	
+	ul#etapes.mini a {
+		font-size: 1em;
+	}
+	
+	ul#etapes.mini div.description {
+		padding: 0.9em 0 0 2.5em;
+	}
+	
+	ul#etapes.mini li#etape2 div.description,
+	ul#etapes.mini li#etape3 div.description {
+		padding-left: 4em;
+	}
+	
 	/* Selected */
 	.selected {
 		background-color: #767f50;
