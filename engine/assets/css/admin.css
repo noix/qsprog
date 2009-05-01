@@ -61,7 +61,7 @@ div.confirm, div.warning, p.message, p.error, p.errorMissing, p.errorInvalid, p.
 	background-color: #e9eae1;
 	margin-bottom: 18px;
 	float: left;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 div.warning {

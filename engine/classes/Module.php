@@ -6,6 +6,7 @@ require_once('classes/Filesystem.php');
 require_once('classes/Form.php');
 require_once('classes/HTTP.php');
 require_once('classes/Path.php');
+require_once('classes/Layout.php');
 require_once('classes/Template.php');
 require_once('classes/Query.php');
 require_once('classes/Query.php');
@@ -41,7 +42,7 @@ class Module {
 	var $invalidData;
 	var $fileUploadError;
 	var $files;
-	var $template;
+	var $layout;
 	var $view = array();
 	
 	/*
@@ -59,8 +60,8 @@ class Module {
 			$this->isRoot = true;
 			$_JAM->rootModuleName = $this->name;
 			
-			// Create template object
-			$this->template = new Template();
+			// Create layout object
+			$this->layout = new Layout();
 		}
 	}
 	
@@ -575,9 +576,9 @@ class Module {
 	function LoadData($data) {
 		return $this->item = $data;
 	}
-
-	function SetTemplate($name) {
-		$this->template->SetTemplate($name .'.'. $_JAM->mode);
+	
+	function SetLayout($name) {
+		$this->layout->SetLayout($name .'.'. $_JAM->mode);
 	}
 	
 	function Display() {
@@ -586,12 +587,12 @@ class Module {
 		// Start output buffering
 		ob_start('mb_output_handler');
 		
-		// Determine template
-		if (isset($this->template)) {
-			$templateName = $this->config['template'];
-			if (!$templateName) $templateName = 'default';
-			$templateFile = $templateName .'.'. $_JAM->mode;
-			$this->template->SetTemplate($templateFile);
+		// Determine layout
+		if (isset($this->layout)) {
+			$layoutName = $this->config['layout'];
+			if (!$layoutName) $layoutName = 'default';
+			$layoutFile = $layoutName .'.'. $_JAM->mode;
+			$this->layout->SetLayout($layoutFile);
 		}
 		
 		// Determine whether we're a nested module
@@ -609,10 +610,10 @@ class Module {
 			$this->LoadView('default');
 		}
 		
-		// Wrap into template if we're the root module
+		// Wrap into layout if we're the root module
 		$buffer = ob_get_clean();
 		if ($this->isRoot) {
-			$this->template->Display($buffer);
+			$this->layout->Display($buffer);
 		} else {
 			print $buffer;
 		}
@@ -705,17 +706,17 @@ class Module {
 		return true;
 	}
 	
-	function LoadViewInTemplateVariable($view) {
+	function LoadViewInLayoutVariable($view) {
 		global $_JAM;
 		
 		ob_start('mb_output_handler');
 		$this->LoadView($view);
 		$viewContent = ob_get_clean();
 		
-		// Add to module template
-		$this->template->AddVariable($view, $viewContent);
+		// Add to layout
+		$this->layout->AddVariable($view, $viewContent);
 		
-		// Add to master template
+		// Add to template
 		$_JAM->AddTemplateVariable($view, $viewContent);
 	}
 	

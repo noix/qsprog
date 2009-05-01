@@ -3,7 +3,7 @@
 class HomeModule extends Module {
 	
 	function DefaultViewController() {
-		$this->LoadViewInTemplateVariable('presentation');
+		$this->LoadViewInLayoutVariable('presentation');
 	}
 	
 	function PresentationViewController() {

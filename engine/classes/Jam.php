@@ -161,7 +161,7 @@ class Jam {
 		// Create User object
 		$this->user = new User();
 		
-		// Create template object
+		// Create layout object
 		$this->template = new Template();
 		
 		// Determine mode
@@ -231,10 +231,7 @@ class Jam {
 		// Store and flush the contents of the output buffer
 		$buffer = ob_get_clean();
 		
-		// Load content into module template
-		$templatedContent = $this->rootModule->template->GetOutput($buffer);
-		
-		// Load and display template associated with mode
+		// Load and display template
 		if ($this->mode == 'html' && $this->rootModuleName == 'admin') {
 			// Special case for admin pages requested in HTML
 			$templateName = 'html_admin';
@@ -242,7 +239,7 @@ class Jam {
 			$templateName = $this->mode;
 		}
 		$this->template->SetTemplate($templateName);
-		$this->template->Display($templatedContent);
+		$this->template->Display($buffer);
 
 		// Set MIME type
 		$contentType = $this->contentType ? $this->contentType : $availableModes[$this->mode];

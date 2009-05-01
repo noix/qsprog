@@ -5,13 +5,13 @@
 			<? if ($titreEntete): ?><h2><?= $titreEntete ?></h2><? endif; ?>
 			<? if ($afficherVideo): ?>
 			<div class="themes">
-				<? if ($intro): ?><p class="themes"><?= $intro ?></p><? endif; ?>
+				<? if ($introEntete): ?><p class="themes"><?= $introEntete ?></p><? endif; ?>
 				<div class="video themes">
 					<div id="videotheme"></div>
 				</div>
 			</div>
 			<? else: ?>
-				<? if ($intro): ?><?= $intro ?><? endif; ?>
+				<? if ($introEntete): ?><?= $introEntete ?><? endif; ?>
 			<? endif; ?>
 		</div>
 		

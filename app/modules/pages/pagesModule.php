@@ -8,7 +8,7 @@ class PagesModule extends Module {
 	
 	function ItemViewController() {
 		// Include all item data as template variables
-		$this->template->AddVariables($this->item);
+		$this->layout->AddVariables($this->item);
 
 		// Load text blocks related to this module
 		$blocs = Module::GetNewModule('blocs');
