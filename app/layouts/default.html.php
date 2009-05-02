@@ -1,11 +1,8 @@
 <div class="couleur">
 	<div class="boite">
 		<div id="intro">
-			<? if ($afficherEtape): ?>
-			<? $etapes = Module::GetNewModule('fleche', $etape) ?>
-			<? $etapes->Display() ?>
-			<? endif; ?>
 
+			<? if ($surtitre): ?><h3><?= $surtitre ?></h3><? endif; ?>
 			<? if ($titre): ?><h2><?= $titre ?></h2><? endif; ?>
 			<? if ($afficherVideo): ?>
 			<div class="themes">
@@ -27,6 +24,10 @@
 		</div>
 		<? endif; ?>
 
+		<? if ($afficherEtape): ?>
+		<? $etapes = Module::GetNewModule('fleche', $etape) ?>
+		<? $etapes->Display() ?>
+		<? endif; ?>
 		<div class="clear">&nbsp;</div>
 	</div>
 </div>
