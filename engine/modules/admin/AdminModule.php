@@ -432,7 +432,7 @@ class AdminModule extends Module {
 		$_JAM->language = $originalLanguage;
 	}
 
-	function AdminDeleteAction($module) {
+	function DeleteAction($module) {
 		if ($_POST['delete']) {
 			// Delete
 			$deleteResult = $module->DeleteItem($_POST['master']);
@@ -449,7 +449,7 @@ class AdminModule extends Module {
 		}
 	}
 	
-	function AdminRevertAction($module) {
+	function RevertAction($module) {
 		if ($_POST['revert']) {
 			// Revert to specific version
 			if ($module->Revert($_POST['revertID'])) {

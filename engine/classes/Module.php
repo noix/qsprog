@@ -36,6 +36,7 @@ class Module {
 	var $items;
 	var $item;
 	var $rawData;
+	var $processedData;
 	
 	var $postData = array();
 	var $missingData;
@@ -56,7 +57,7 @@ class Module {
 		$this->itemID = $item;
 		
 		// Determine whether we are the root module
-		if (!isset($_JAM->rootModule)) {
+		if (!isset($_JAM->rootModuleName)) {
 			$this->isRoot = true;
 			$_JAM->rootModuleName = $this->name;
 			
@@ -435,7 +436,7 @@ class Module {
 				$queryParams['fields'][] = $name;
 			}
 		}
-
+		
 		foreach($this->schema as $name => $info) {
 			// Manually remove multi fields from query; they will be processed anyway (possibly kludgy)
 			if ($info['type'] == 'multi') {
@@ -508,32 +509,31 @@ class Module {
 		//dp($query->GetQueryString());
 		
 		// Fetch actual module data
-		if ($dataArray = $query->GetArray()) {
-			
+		if ($this->rawData = $query->GetArray()) {
 			// Load data for 'multi' fields
 			if ($this->hasMulti) {
 				$where = 'frommodule = '. $this->moduleID;
 				if ($multiArray = Query::FullResults('_relationships', $where)) {
-					foreach($dataArray as $id => $item) {
+					foreach($this->rawData as $id => $item) {
 						foreach($multiArray as $multiData) {
 							if($multiData['fromid'] == $id) {
-								$dataArray[$id][$this->multiRelatedModules[$multiData['tomodule']]][] = $multiData['toid'];
+								$this->rawData[$id][$this->multiRelatedModules[$multiData['tomodule']]][] = $multiData['toid'];
 							}
 						}
 					}
 				}
 			}
 			
-			// Keep raw data from database (with data from multi fields)
-			$this->rawData = $dataArray;
+			// Make a copy of the data for processing so we can keep the raw data available
+			$this->processedData = $this->rawData;
 
 			// Post-process data
 			foreach($this->schema as $name => $info) {
-				foreach ($dataArray as $id => $data) {
-					if ($dataArray[$id][$name]) {
+				foreach ($this->processedData as $id => $data) {
+					if ($this->processedData[$id][$name]) {
 						switch ($info['type']) {
 							case 'string':
-								$dataArray[$id][$name] = TextRenderer::SmartizeText($data[$name]);
+								$this->processedData[$id][$name] = TextRenderer::SmartizeText($data[$name]);
 								break;
 							case 'text':
 							case 'shorttext':
@@ -541,10 +541,10 @@ class Module {
 									// Render text using TextRenderer if it's not a WYSIWYG field
 									if (strstr($data[$name], "\n") !== false) {
 										// String contains newline characters; format as multiline text
-										$dataArray[$id][$name] = TextRenderer::TextToHTML($data[$name]);
+										$this->processedData[$id][$name] = TextRenderer::TextToHTML($data[$name]);
 									} else {
 										// String is a single line; format as single line
-										$dataArray[$id][$name] = TextRenderer::SmartizeText($data[$name]);
+										$this->processedData[$id][$name] = TextRenderer::SmartizeText($data[$name]);
 									}
 								}
 								break;
@@ -552,20 +552,26 @@ class Module {
 							case 'timestamp':
 							case 'date':
 							case 'time':
-								$dataArray[$id][$name] = new Date($data[$name]);
+								$this->processedData[$id][$name] = new Date($data[$name]);
 								break;
 							case 'file':
-								$dataArray[$id][$name] = $this->NestModule('files', $data[$name]);
+								$this->processedData[$id][$name] = $this->NestModule('files', $data[$name]);
 								break;
 						}
 					}
 				}
 			}
+			
+			// Subclasses can provide a method to further format data
+			if (method_exists($this, 'FormatData')) {
+				$this->FormatData();
+			}
+			
 			if ($this->items) {
 				// If $this->items is already set, don't overwrite it
-				return $dataArray;
+				return $this->processedData;
 			} else {
-				return $this->items = $dataArray;
+				return $this->items = $this->processedData;
 			}
 		} else {
 			return false;
@@ -578,6 +584,7 @@ class Module {
 	}
 	
 	function SetLayout($name) {
+		global $_JAM;
 		$this->layout->SetLayout($name .'.'. $_JAM->mode);
 	}
 	

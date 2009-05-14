@@ -54,8 +54,7 @@ class Jam {
 		mb_language('uni');
 		
 		// Error display
-		error_reporting(E_ERROR|E_WARNING|E_PARSE|E_USER_ERROR|E_USER_WARNING);
-		
+		error_reporting(E_ALL^E_NOTICE);
 		
 		// Add app/ and engine/ to include path
 		set_include_path(get_include_path() . PATH_SEPARATOR . './app' . PATH_SEPARATOR . './engine');
@@ -225,7 +224,7 @@ class Jam {
 			// Path does not exist; throw 404
 			header("HTTP/1.0 404 Not Found");
 			$this->rootModule = Module::GetNewModule('errors');
-			$this->rootModule->LoadView('notfound');
+			$this->rootModule->Display();
 		}
 
 		// Store and flush the contents of the output buffer

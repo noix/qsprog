@@ -40,7 +40,7 @@ class Template {
 		// Make sure we have a valid template file
 		if ($this->templateFile) {
 			// If 'body' variable is not set, use $body
-			if (!$this->variable['body']) {
+			if (!$this->variables['body']) {
 				$this->variables['body'] = $body;
 			}
 

@@ -2,7 +2,7 @@
 
 class ErrorsModule extends Module {
 	
-	function NotfoundViewController() {
+	function DefaultViewController() {
 		global $_JAM;
 		
 		$_JAM->title = $this->strings['title'];
