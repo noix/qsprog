@@ -143,6 +143,12 @@ class Database {
 						case 'restrict':
 							$deleteAction = 'RESTRICT';
 							break;
+						case 'setnull':
+							$deleteAction = 'SET NULL';
+							break;
+						case 'noaction':
+							$deleteAction = 'NO ACTION';
+							break;
 					}
 					$foreignKeysString .= ' ON DELETE '. $deleteAction .' ON UPDATE CASCADE';
 				}
