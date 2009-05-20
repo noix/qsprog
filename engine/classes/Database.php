@@ -119,7 +119,10 @@ class Database {
 				if (is_array($info) && $info['relatedModule']) {
 					// Add foreign keys
 					$indexes[] = $field;
-					$foreignFields[$field] = $info['relatedModule'];
+					$foreignFields[$field] = array(
+						'table' => $info['relatedModule'],
+						'deleteAction' => $info['relatedDeleteAction']
+					);
 				}
 			}
 		}
@@ -131,9 +134,17 @@ class Database {
 			// Default is InnoDB
 			if ($foreignFields) {
 				$foreignKeysString = ', INDEX ('. implode(', ', $indexes) .')';
-				foreach ($foreignFields as $field => $table) {
-					$foreignKeysString .= ', FOREIGN KEY ('. $field .') REFERENCES '. $table .' (id)';
-					$foreignKeysString .= ' ON DELETE RESTRICT ON UPDATE CASCADE';
+				foreach ($foreignFields as $field => $info) {
+					$foreignKeysString .= ', FOREIGN KEY ('. $field .') REFERENCES '. $info['table'] .' (id)';
+					switch ($info['deleteAction']) {
+						case 'cascade':
+							$deleteAction = 'CASCADE';
+							break;
+						case 'restrict':
+							$deleteAction = 'RESTRICT';
+							break;
+					}
+					$foreignKeysString .= ' ON DELETE '. $deleteAction .' ON UPDATE CASCADE';
 				}
 			}
 			$query = 'CREATE TABLE IF NOT EXISTS '. $name .' ('. $fieldDefinitions . $foreignKeysString .') ENGINE=INNODB';

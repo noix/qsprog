@@ -1,0 +1,7 @@
+- table blocs et pages
+	- ne sont PAS keepversions
+
+- table participants
+	- relations
+		- contributions: on delete CASCADE
+
