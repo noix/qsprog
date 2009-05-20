@@ -21,8 +21,8 @@ class ThemesModule extends Module {
 	
 	function ItemViewController() {
 		$templateVariables = array(
-			'surtitreEntete' => 'Réfléchir : '. $this->item['titreCourt'],
-			'titreEntete' => $this->item['titreLong'],
+			'surtitre' => 'Réfléchir : '. $this->item['titreCourt'],
+			'titre' => $this->item['titreLong'],
 			'afficherVideo' => true,
 			'intro' => $this->item['intro'],
 			'titreCorps' => 'Pistes de réflexion',

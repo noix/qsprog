@@ -32,6 +32,14 @@
 	</div>
 </div>
 
+<? if ($titreCorps): ?>
+<div id="titre">
+	<div class="boite">
+		<h2><?= $titreCorps ?></h2>
+	</div>
+</div>
+<? endif; ?>
+
 <div class="navigation">
 	<div class="boite">
 		<?= $body ?>

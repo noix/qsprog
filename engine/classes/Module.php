@@ -652,22 +652,22 @@ class Module {
 		// Determine controller method name
 		$controllerMethod = ucfirst($view) . $controllerMethodSuffix;
 
-		// Check whether we're nested within the admin module; that's a special case
-		if ($this->parentModule->name == 'admin') {
+		// Check whether we're in admin mode; that's a special case
+		if ($_JAM->rootModuleName == 'admin') {
 			// Run controller method if available
 			$adminControllerMethod = 'Admin'. $controllerMethod;
 			if (method_exists($this, $adminControllerMethod)) {
 				$this->$adminControllerMethod();
 				$methodDidRun = true;
-			} elseif (method_exists($this->parentModule, $adminControllerMethod)) {
-				$this->parentModule->$adminControllerMethod();
+			} elseif (method_exists($_JAM->rootModule, $adminControllerMethod)) {
+				$_JAM->rootModule->$adminControllerMethod();
 				$methodDidRun = true;
 			}
 			
 			// Determine path to view file
 			$viewFilename = 'admin_'. $view . $viewFileSuffix;
 			$moduleViewPath = $moduleViewsDir . $viewFilename;
-			$adminViewPath = $this->parentModule->modulePath .'views/'. $viewFilename;
+			$adminViewPath = $_JAM->rootModule->modulePath .'views/'. $viewFilename;
 			if (file_exists($moduleViewPath)) {
 				$viewPath = $moduleViewPath;
 			} elseif (file_exists($adminViewPath)) {
@@ -860,7 +860,7 @@ class Module {
 				) {
 					foreach($relatedModuleSchema as $field => $info) {
 						if ($info['relatedModule'] == $this->name) {
- 							$relatedModule = $this->parentModule->NestModule($module);
+ 							$relatedModule = Module::GetNewModule($module);
 							// Load all fields
 							$queryParams = array(
 								'fields' => $relatedModuleKeyQuery['fields'],

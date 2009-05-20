@@ -15,9 +15,9 @@ class EvenementsModule extends Module {
 		$introString = $detailsString . $this->item['description'];
 		
 		$templateVariables = array(
-			'surtitreEntete' => 'Événements',
-			'titreEntete' => $this->item['titre'],
-			'introEntete' => $introString,
+			'surtitre' => 'Événements',
+			'titre' => $this->item['titre'],
+			'intro' => $introString,
 			'afficherEtape' => true,
 			'etape' => 2
 		);
