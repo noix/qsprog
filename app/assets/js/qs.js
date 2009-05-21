@@ -51,10 +51,21 @@ $(document).ready(function(){
 	// FCKEditor
 	if ($('div.wysiwyg textarea').length > 0) {
 		$('div.wysiwyg textarea').attr('id', 'wysiwyg');
+		
+		// Find base path for FCKEditor
+		$('script').each(function(index) {
+			var string = $(this).attr('src');
+			var index;
+			if (index = string.indexOf('assets/js/')) {
+				basePath = string.substring(0, index);
+				return false;
+			}
+		});
+		
 		var oFCKeditor = new FCKeditor('wysiwyg');
 		oFCKeditor.Width = '700';
 		oFCKeditor.Height = '512';
-		oFCKeditor.BasePath = "/assets/js/fckeditor/";
+		oFCKeditor.BasePath = basePath + "assets/js/fckeditor/";
 		oFCKeditor.ReplaceTextarea() ;
 	}	
 	
