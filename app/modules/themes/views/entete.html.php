@@ -5,7 +5,7 @@
 	<li><?= a(
 		$item['path'],
 		e('span', array('class' => 'titre'), $item['titreCourt']),
-		array('class' => 'theme'. $i++ .' coinsronds'. ($this->itemID == $item['master'] ? ' selected' : ''))
+		array('class' => 'theme'. $i++ .' coinsronds'. ($_JAM->rootModule->layout->variables['theme'] == $item['master'] ? ' selected' : ''))
 	) ?></li>
 	<? endforeach; ?>
 </ul>

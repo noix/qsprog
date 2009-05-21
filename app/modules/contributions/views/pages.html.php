@@ -39,7 +39,7 @@
 			<tr>
 				<th>Prénom</th>
 				<th>Nom</th>
-				<th>Membre de Québec solidaire</th>
+				<th>Membre</th>
 			</tr>
 			<? for ($i = 1; $i < 7; $i++): ?>
 			<tr>

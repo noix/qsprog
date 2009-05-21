@@ -6,8 +6,8 @@
 
 <div class="dynamique themes">
 <? $this->DisplayNestedModule('refs') ?>
-
 <? $this->DisplayNestedModule('pointsvue') ?>
+<? $this->DisplayNestedModule('contributions') ?>
 
 <div class="bloc-dyn">
 <h2>Téléchargements</h2>

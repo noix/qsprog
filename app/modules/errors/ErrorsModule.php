@@ -2,13 +2,14 @@
 
 class ErrorsModule extends Module {
 	
-	function NotfoundViewController() {
+	function DefaultViewController() {
 		global $_JAM;
 		
 		$_JAM->title = $this->strings['title'];
 		$layoutVariables = array(
-			'enteteTitre' => $this->strings['title'],
-			'intro' => $this->strings['text']
+			'titre' => $this->strings['title'],
+			'intro' => $this->strings['text'],
+			'afficherEtape' => true
 		);
 		$this->layout->AddVariables($layoutVariables);
 	}

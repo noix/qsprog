@@ -27,6 +27,10 @@ class PagesModule extends Module {
 		$this->LoadView($path);
 	}
 	
+	function ContribuerViewController() {
+		$this->DisplayNestedModule('contributions');
+	}
+	
 }
 
 ?>

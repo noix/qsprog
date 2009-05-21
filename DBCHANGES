@@ -4,4 +4,3 @@
 - table participants
 	- relations
 		- contributions: on delete CASCADE
-

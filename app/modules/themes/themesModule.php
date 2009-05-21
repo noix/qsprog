@@ -20,17 +20,18 @@ class ThemesModule extends Module {
 	}
 	
 	function ItemViewController() {
-		$templateVariables = array(
+		$layoutVariables = array(
 			'surtitre' => 'Réfléchir : '. $this->item['titreCourt'],
 			'titre' => $this->item['titreLong'],
 			'afficherVideo' => true,
 			'intro' => $this->item['intro'],
 			'titreCorps' => 'Pistes de réflexion',
 			'afficherTheme' => true,
+			'theme' => $this->itemID,
 			'afficherEtape' => true,
 			'etape' => 1
 		);
-		$this->template->AddVariables($templateVariables);
+		$this->layout->AddVariables($layoutVariables);
 
 		// Charger le module lexique
 		$lexique = $this->NestModule('lexique');
@@ -72,7 +73,6 @@ class ThemesModule extends Module {
 			'fields' => 'titreCourt',
 			'orderby' => 'sortIndex'
 		);
-
 		$this->view['themes'] = $this->FetchItems($queryParams);
 	}
 	
