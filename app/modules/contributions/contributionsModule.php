@@ -107,6 +107,11 @@ class ContributionsModule extends Module {
 	}
 	
 	function PagesViewController() {
+		if ($_GET['m'] == 'updated') {
+			HTTP::RedirectLocal('merci');
+			return false;
+		}
+		
 		$this->view['form'] = $this->GetForm();
 
 		$themes = Module::GetNewModule('themes');
