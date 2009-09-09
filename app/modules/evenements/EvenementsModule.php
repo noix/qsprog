@@ -12,7 +12,7 @@ class EvenementsModule extends Module {
 		$dateString = e('p', $date);
 		$lieuString = e('p', $this->item['lieu']);
 		$detailsString = e('div', array('class' => 'details'), $dateString . $lieuString);
-		$introString = $detailsString . $this->item['description'];
+		$introString = $detailsString . e('p', $this->item['description']);
 		
 		$templateVariables = array(
 			'surtitre' => 'Événements',
