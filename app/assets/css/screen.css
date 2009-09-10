@@ -345,10 +345,18 @@ div.couleur div.boite dl.contributions dt {
 		background-color: white;
 		margin: 1.5em 0 0;
 	}
-
+	
+	div#big-bloc ul#etapes {
+		width: 70.8em; /* Accueil */
+	}
+	
 	ul#etapes li {
 		float: left;
 		width: 16.17em;
+	}
+	
+	div#big-bloc ul#etapes li {
+		width: 23.6em; /* Accueil */
 	}
 
 	ul#etapes div.digit {
@@ -719,13 +727,23 @@ div.couleur div.boite dl.contributions dt {
 						border-bottom: 1px solid #005a89;
 				}
 				/*Dynamique à l'Accueil*/
-
 				}
 				div.bloc-dyn.fleches {
 					padding-bottom: 1em;
 					background: url("fleches.png") no-repeat bottom left;
 				}
-
+			/*Accueil version perspectives */
+			div.colonne {
+				padding: 0 0.5em;
+				width: 23em;
+				float: left;
+			}
+			div.colonne li a {
+				line-height: 2em;
+			}
+			div.colonne dt a {
+				line-height: 1.5em;
+			}
 
 /*Contributions*/
 div#contributions {
@@ -762,6 +780,11 @@ div.bloc-eche ul {
 }
 div.bloc-eche p.preambule {
 	margin-bottom: 0.5em;
+}
+
+/* Participer */
+dl.participer {
+	line-height: 1.5em;
 }
 
 	/* Formulaires */
@@ -877,6 +900,8 @@ div.bloc-eche p.preambule {
 		clear: both;
 		display: block;
 		padding-bottom: 0.5em;
+		margin-top: 1.5em; /* Pour le formulaire perspectives */
+		
 	}
 	div.titre input {
 		margin-bottom: 1em;
@@ -939,6 +964,51 @@ div.calendrier dl dd span {
 	
 */
 
+/* Perspectives */
+ul.perspectives li {
+	margin-top: 1em;
+	font-size: 1.15em;
+	font-weight: bold;
+}
+ul.perspectives ul li  {
+	margin-top: 0em;
+	font-size: 0.85em;
+	font-weight: normal;
+}
+	/* Couleurs */
+	ul.perspectives li div.numero {
+		color: #005a89;
+	}
+	ul.perspectives li ul li div.numero {
+		color: #4da1cd;
+	}
+	/* numéro à côté de texte */
+	ul.perspectives li, 
+	ul.perspectives li div.texte,
+	ul.perspectives li div.numero  {
+		float: left;
+	}
+	ul.perspectives li ul li,
+	ul.perspectives li div.texte {
+		float: none;
+	}
+	ul.perspectives div.texte {
+		padding-left: 40px;
+	}
+
+/* Sous-titre */
+ul.perspectives li.entete {
+	margin: 1em 0 0.5em 40px;
+	font-weight: bold;
+	font-size: 1em;
+}
+/* Titre partie */
+ul.perspectives li.section.entete {
+	margin-left: 0;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
 p.errorMissing {
 	width: 47.5em;
 	padding: 0.5em 1em;
@@ -954,3 +1024,4 @@ span.highlight {
 	background-color: #FFF2B9;
 	
 }
+

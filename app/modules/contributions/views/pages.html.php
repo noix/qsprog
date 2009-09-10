@@ -50,47 +50,28 @@
 			<? endfor; ?>
 		</table>
 	
-	<h4>Thème</h4>
-		<p class="expli"><span<?= in_array('theme', $form->missing) ? ' class="highlight"' : '' ?>>Sélectionnez le thème sur lequel porte votre réflexion.</span></p>
-		<ul class="themes">
-			<? $i = 1 ?>
-			<? foreach ($themes as $theme): ?>
-			<li class="theme<?= $i++ ?> coinsronds">
-				<?= $form->Radio('theme', $theme['master']) ?>
-				<label for="theme<?= $i ?>"><?= $theme['titreCourt'] ?></label>
-			</li>
-			<? endforeach; ?>
-		</ul>
 	<h4>Votre contribution</h4>
-		<ul class="contribution">
-			<li>
-				<?= $form->Radio('type', 1) ?>
-				<label for="type">Analyse </label>
-				<p>Regard sur la soiété actuelle. Maximum de 1600 mots.<br/>
-					<em>Jusqu'à novembre 2008</em></p>
-			</li>
-			<li>
-				<?= $form->Radio('type', 2) ?>
-				<label for="type">Perspective </label>
-				<p>Proposition d'orientations et de mesures. Maximum de 400 mots.<br/>
-				<em>Jusqu'à février 2009</em></p>
-				<div id="perspectives">
-					<p class="perspec">Type de perspective :</p>
-					<select name="typePerspective">
-						<option value="1">Objectif</option>
-						<option value="2">Mesure structurante</option>
-						<option value="3">Principe d'action ou d'organisation</option>
-					</select>
-				</div>
-			</li>
-		</ul>
-		
+		<p class="perspective">Cette proposition est un
+			<select name="typeModification">
+				<option value="1">amendement à</option>
+				<option value="2">nouveau point qui vient après</option>
+			</select>
+		la perspective
+		<select name="perspective">
+			<? foreach ($perspectives as $id => $perspective): ?>
+			<option value="<?= $id ?>"><?= $perspective['numero'] ?></option>
+			<? endforeach; ?>
+		</select>
+		</p>
+
 		<div class="titre<?= in_array('titre', $form->missing) ? ' missing"' : '' ?>">
 			<label for="titre">Titre</label>
 			<?= $form->AutoItem('titre') ?>
 		</div>
 		<div class="wysiwyg">
 			<?= $form->AutoItem('contribution') ?>
-			</div>
+		</div>
+		
+		<input id="form_phase" type="hidden" name="phase" value="2" />
 		<?= $form->Submit('Envoyer') ?>
 <? $form->Close() ?>

@@ -19,7 +19,7 @@ class EvenementsModule extends Module {
 			'titre' => $this->item['titre'],
 			'intro' => $introString,
 			'afficherEtape' => true,
-			'etape' => 2
+			'etape' => 3
 		);
 		$this->layout->AddVariables($templateVariables);
 	}
@@ -33,6 +33,15 @@ class EvenementsModule extends Module {
 		$this->FetchItems($queryParams);
 	}
 	
+	function PagesViewController() {
+		$queryParams = array(
+			'fields' => array('titre', 'date', 'duree', 'plusieursJours', 'lieu'),
+			'where' => 'date > NOW()',
+			'orderby' => 'date ASC'
+		);
+		$this->FetchItems($queryParams);
+	}
+
 	function ThemesViewController() {
 		$queryParams = array(
 			'fields' => array('titre', 'date', 'lieu'),

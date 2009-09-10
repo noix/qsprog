@@ -68,10 +68,6 @@ class ContributionsModule extends Module {
 				$this->missingData[] = 'hasMember';
 			}
 
-			// S'assurer qu'un thème ait été sélectionné
-			if (!$_POST['theme']) {
-				$this->missingData[] = 'theme';
-			}
 		}
 		
 		return parent::ValidateData();
@@ -114,14 +110,13 @@ class ContributionsModule extends Module {
 		
 		$this->view['form'] = $this->GetForm();
 
-		$themes = Module::GetNewModule('themes');
+		$perspectives = Module::GetNewModule('perspectives');
 		$queryParams = array(
-			'fields' => 'titreCourt',
-			'orderby' => 'sortIndex'
+			'fields' => 'numero'
 		);
-		$themes->FetchItems($queryParams);
+		$perspectives->FetchItems($queryParams);
 
-		$this->view['themes'] = $themes->items;
+		$this->view['perspectives'] = $perspectives->items;
 	}
 	
 	function ThemesViewController() {
@@ -131,6 +126,18 @@ class ContributionsModule extends Module {
 				'theme = '. $this->parentModule->itemID,
 				'publier = TRUE'
 			),
+			'orderby' => 'modified DESC'
+		);
+		$this->FetchItems($queryParams);
+	}
+
+	function HomeViewController() {
+		$queryParams = array(
+			'fields' => array('titre', 'cercle'),
+			'where' => array(
+				'publier = TRUE'
+			),
+			'limit' => 8,
 			'orderby' => 'modified DESC'
 		);
 		$this->FetchItems($queryParams);

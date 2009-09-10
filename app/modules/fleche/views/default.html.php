@@ -4,8 +4,8 @@
 			<span>1</span>
 		</div>
 		<div class="description">
-			<?= a('reflechir', 'Réfléchir') ?>
-			<p>S'informer sur les thèmes</p>
+			<?= a('sinformer', 'S’informer') ?>
+			<p>Lire les perspectives</p>
 		</div>
 	</li>
 	<li id="etape2"<?= $etape == 2 ? ' class="selected"' : '' ?>>
@@ -13,8 +13,8 @@
 			<span>2</span>
 		</div>
 		<div class="description">
-			<?= a('echanger', 'Échanger') ?>
-			<p>Participer aux débats</p>
+			<?= a('contribuer', 'Contribuer') ?>
+			<p>Proposer un amendement</p>
 		</div>
 	</li>
 	<li id="etape3"<?= $etape == 3 ? ' class="selected"' : '' ?>>
@@ -22,8 +22,8 @@
 			<span>3</span>
 		</div>
 		<div class="description">
-			<?= a('contribuer', 'Contribuer') ?>
-			<p>Remplir le formulaire</p>
+			<?= a('participer', 'Participer') ?>
+			<p>Décider ensemble</p>
 		</div>
 	</li>
 </ul>
