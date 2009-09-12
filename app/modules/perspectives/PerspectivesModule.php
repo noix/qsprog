@@ -6,6 +6,10 @@ class PerspectivesModule extends Module {
 		$this->FetchItems();
 	}
 	
+	function ContributionsViewController() {
+		$this->FetchItems();
+	}
+	
 	function FormatData() {
 		foreach ($this->processedData as $id => $item) {
 			// Check whether this is the very first item

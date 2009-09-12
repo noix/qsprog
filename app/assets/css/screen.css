@@ -788,6 +788,9 @@ dl.participer {
 }
 
 	/* Formulaires */
+	div.navigation form {
+		width: 700px;
+	}
 	div.navigation h4 {
 		clear: left;
 		font-family: georgia, verdana, "times new roman";
@@ -975,6 +978,15 @@ ul.perspectives ul li  {
 	font-size: 0.85em;
 	font-weight: normal;
 }
+ul.perspectives a.top {
+	font-size: 10px;
+	float: right;
+	margin-bottom: 12px;
+	line-height: 1.3em;
+	padding-right: 12px;
+	font-weight: normal;
+	background: url("arrowUp.png") no-repeat top right;
+}
 	/* Couleurs */
 	ul.perspectives li div.numero {
 		color: #005a89;
@@ -987,6 +999,7 @@ ul.perspectives ul li  {
 	ul.perspectives li div.texte,
 	ul.perspectives li div.numero  {
 		float: left;
+		clear: right;
 	}
 	ul.perspectives li ul li,
 	ul.perspectives li div.texte {
@@ -995,12 +1008,60 @@ ul.perspectives ul li  {
 	ul.perspectives div.texte {
 		padding-left: 40px;
 	}
+	ul.perspectives div.texte a {
+		font-size: 10px;
+		position: relative;
+		top: -6px;
+	}
+
+/* Table des matières perspectives */
+ul.tdm {
+	font-size: 0.95em;
+	margin-bottom: 3em;
+}
+ul.tdm li {
+	line-height: 1.6em;
+}
+ul.tdm li span {
+	float: left;
+	color: #999;
+}
+ul.tdm li div {
+	padding-left: 2.2em;
+}
+ul.tdm li.header {
+	font-weight: bold;
+	margin-top: 13px;
+	font-size: 1.1em;
+}
+
+/* Perspectives sur le formulaire */
+ul.perspectives-formulaire {
+	margin-top: 12px;
+}
+ul.perspectives-formulaire li {
+	display: none;
+	background-color: #f6f6f6;
+	padding: 6px 12px 9px;
+}
+ul.perspectives-formulaire div.numero {
+	float: left;
+	font-weight: bold;
+	padding-top: 0.42em;
+}
+ul.perspectives-formulaire div.texte {
+	padding-left: 40px;
+}
+ul.perspectives-formulaire div.texte strong {
+	font-weight: normal;
+}
 
 /* Sous-titre */
 ul.perspectives li.entete {
 	margin: 1em 0 0.5em 40px;
 	font-weight: bold;
 	font-size: 1em;
+	color: #999;
 }
 /* Titre partie */
 ul.perspectives li.section.entete {

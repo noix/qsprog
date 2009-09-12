@@ -47,6 +47,20 @@ $(document).ready(function(){
 			$("perspectives").show();
 		}
 	})*/
+	$('#form_perspective').click (function() {
+		var selectedID = this.value;
+		$('ul.perspectives-formulaire li').hide(); // Hide everything
+		$('li#perspective-' + selectedID).show(); // Show selected perspective
+		console.log($('li#perspective-' + selectedID));
+	});
+	
+	// Initialize perspective display
+	$('#form_perspective').click();
+
+	// Perspectives
+	$('ul.perspectives li.parent > div.texte').click(function() {
+		$(this).find('ul').toggle();
+	});
 	
 	// FCKEditor
 	if ($('div.wysiwyg textarea').length > 0) {

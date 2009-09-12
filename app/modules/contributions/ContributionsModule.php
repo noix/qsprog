@@ -109,7 +109,10 @@ class ContributionsModule extends Module {
 		}
 		
 		$this->view['form'] = $this->GetForm();
-
+		
+		// Add perspective specified as GET variable to form values
+		$this->view['form']->LoadValue('perspective', $_GET['perspective']);
+		
 		$perspectives = Module::GetNewModule('perspectives');
 		$queryParams = array(
 			'fields' => 'numero'

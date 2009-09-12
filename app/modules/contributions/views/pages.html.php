@@ -52,18 +52,13 @@
 	
 	<h4>Votre contribution</h4>
 		<p class="perspective">Cette proposition est un
-			<select name="typeModification">
-				<option value="1">amendement à</option>
-				<option value="2">nouveau point qui vient après</option>
-			</select>
-		la perspective
-		<select name="perspective">
-			<? foreach ($perspectives as $id => $perspective): ?>
-			<option value="<?= $id ?>"><?= $perspective['numero'] ?></option>
-			<? endforeach; ?>
-		</select>
+			<?= $form->Select('typeModification', array('1' => 'amendement à', '2' => 'nouveau point venant après')) ?>
+			la perspective
+			<?= $form->AutoItem('perspective') ?>
 		</p>
-
+		
+		<?= $this->DisplayNestedModule('perspectives') ?>
+		
 		<div class="titre<?= in_array('titre', $form->missing) ? ' missing"' : '' ?>">
 			<label for="titre">Titre</label>
 			<?= $form->AutoItem('titre') ?>
