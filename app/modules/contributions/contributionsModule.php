@@ -6,8 +6,13 @@ class ContributionsModule extends Module {
 	var $participants = array();
 	
 	function GetPath() {
-		$themesModule = Module::GetNewModule('themes', $this->item['theme']);
-		if ($path = $themesModule->item['path'] .'/'. String::PrepareForURL($this->item['titre'])) {
+		if ($this->item['phase'] == 1) {
+			$themesModule = Module::GetNewModule('themes', $this->item['theme']);
+			$pathPrefix = $themesModule->item['path'];
+		} else {
+			$pathPrefix = 'contributions';
+		}
+		if ($path = $pathPrefix .'/'. String::PrepareForURL($this->item['titre'])) {
 			return $path;
 		} else {
 			trigger_error("Couldn't get path for item", E_USER_ERROR);
@@ -94,7 +99,7 @@ class ContributionsModule extends Module {
 			'titre' => 'Contribution',
 			'intro' => "Les contributions comme celle ci-dessous ont été rédigées par des cercles citoyens. Elles vous sont suggérées comme lecture afin d'alimenter votre réflexion sur les enjeux et vous montrer la diversité des opinions, des théories et des tendances des membres de Québec solidaire. Vous pouvez utiliser ces textes comme point de départ et y réagir, ou alors écrire votre contribution en partant d'ailleurs.",
 			'titreCorps' => $this->item['titre'],
-			'afficherTheme' => true,
+			'afficherTheme' => $this->item['phase'] == 1,
 			'theme' => $this->item['theme'],
 			'afficherEtape' => true,
 			'etape' => 1

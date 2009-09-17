@@ -36,6 +36,18 @@ div.sous-boite {
 div.sous-boite p {
 	margin-bottom: 1em;
 }
+div.sous-boite div.perspective {
+	background-color: #f6f6f6;
+	padding: 8px 12px 2px 12px;
+	margin-bottom: 12px;
+}
+div.sous-boite div.perspective div.texte p {
+	font-family: georgia, verdana, "times new roman";
+	font-size: 0.95em;
+}
+div.sous-boite div.perspective div.texte strong {
+	font-weight: normal;
+}
 
 /* Haut du site */
  	/* Logo */
