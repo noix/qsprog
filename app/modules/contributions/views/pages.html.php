@@ -52,9 +52,11 @@
 	
 	<h4>Votre contribution</h4>
 		<p class="perspective">Cette proposition est un
-			<?= $form->Select('typeModification', array('1' => 'amendement à', '2' => 'nouveau point venant avant', '3' => 'nouveau point venant après')) ?>
-			la perspective
-			<?= $form->AutoItem('perspective') ?>
+			<?= $form->Select('typeModification', $this->strings['typesModificationFrontend']) ?>
+			<span id="selecteur-perspective">
+				la perspective
+				<?= $form->AutoItem('perspective') ?>
+			</span>
 		</p>
 		
 		<?= $this->DisplayNestedModule('perspectives') ?>

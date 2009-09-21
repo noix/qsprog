@@ -47,15 +47,25 @@ $(document).ready(function(){
 			$("perspectives").show();
 		}
 	})*/
-	$('#form_perspective').click (function() {
+	$('#form_perspective').click(function() {
 		var selectedID = this.value;
 		$('ul.perspectives-formulaire li').hide(); // Hide everything
 		$('li#perspective-' + selectedID).show(); // Show selected perspective
-		console.log($('li#perspective-' + selectedID));
+	});
+	
+	$('#form_typeModification').click(function() {
+		if (this.value == 4) {
+			$('ul.perspectives-formulaire li').hide(); // Hide perspective
+			$('#selecteur-perspective').hide(); // Hide selector box
+		} else {
+			$('#form_perspective').click();
+			$('#selecteur-perspective').show();
+		}
 	});
 	
 	// Initialize perspective display
 	$('#form_perspective').click();
+	$('#form_typeModification').click();
 
 	// Perspectives
 	$('ul.perspectives li.parent > div.texte').click(function() {
