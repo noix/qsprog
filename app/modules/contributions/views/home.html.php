@@ -5,4 +5,5 @@
 	<dd>par <?= $item['cercle'] ?></dd>
 <? endforeach; ?>
 </dl>
+<?= a('contributions', 'Voir toutes les contributions') ?>
 <? endif; ?>

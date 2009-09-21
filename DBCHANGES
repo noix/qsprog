@@ -1,10 +1,6 @@
-
-Vieux sûrement plus bon
------------------------
-
-- table blocs et pages
-	- ne sont PAS keepversions
-
-- table participants
-	- relations
-		- contributions: on delete CASCADE
+- ajouter un item dans _paths
+	- path: contributions
+	- current: 1
+	- module: 7
+	- item: 0
+	- language: 'fr'

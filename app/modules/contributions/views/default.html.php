@@ -1,23 +1,16 @@
-<? if ($publier): ?>
-<p class="auteur">par <?= $cercle ?></p>
-<div class="sous-boite">
-<? if ($phase == 2): ?>
-<? switch ($typeModification):
-	case 1:
-		$typeString = 'est un amendement à';
-		break;
-	case 2:
-		$typeString = 's’inscrit immédiatement avant';
-		break;
-	case 3:
-		$typeString = 's’inscrit immédiatement après';
-		break;
-endswitch; ?>
-<p>Cette contribution <?= $typeString ?> la perspective <strong><?= $perspective_numero ?></strong>:</p>
-<div class="perspective">
-	<div class="texte"><?= TextRenderer::FormatText($perspective_texte) ?></div>
-</div>
-<? endif; ?>
-<?= $contribution ?>
-</div>
+<? if ($this->items): ?>
+<dl>
+	<? foreach ($this->items as $item): ?>
+	<dt><?= a($item['path'], $item['titre']) ?></dt>
+	<dd>
+		<? if ($item['phase'] == 2): ?>
+		<p>
+			<?= $item['typeModification_string'] . (($item['typeModification'] == 1) ? ' à' : '') ?>
+			<?= ($item['typeModification'] == 4) ? '' : ' la perspective ' . e('strong', $item['perspective_numero']) ?></p>
+		<? endif; ?>
+		<p>par <?= $item['cercle'] ?></p>
+	</dd>
+	<? endforeach; ?>
+</dl>
+<? else: ?>
 <? endif; ?>
