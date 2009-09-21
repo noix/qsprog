@@ -72,10 +72,15 @@ class ContributionsModule extends Module {
 				$this->missingMember = true;
 				$this->missingData[] = 'hasMember';
 			}
-
+			
 		}
 		
-		return parent::ValidateData();
+		parent::ValidateData();
+
+		if ($this->postData['typeModification'] == 4) {
+			// Si c'est un commentaire général, ne pas inscrire de perspective dans la DB
+			$this->postData['perspective'] = 0;
+		}
 	}
 
 	function PostProcessData($id) {
