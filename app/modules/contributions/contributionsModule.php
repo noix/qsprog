@@ -95,12 +95,33 @@ class ContributionsModule extends Module {
 	}
 	
 	function DefaultViewController() {
+		$queryParams = array(
+			'fields' => array('titre', 'phase', 'cercle', 'perspective', 'typeModification'),
+			'where' => array(
+				'publier = TRUE'
+//				'phase = 2'
+			),
+			'orderby' => 'contributions.modified DESC'
+		);
+		$this->FetchItems($queryParams);
+		$layoutVariables = array(
+			'surtitre' => 'S’informer',
+			'titre' => 'Contributions',
+			'intro' => "Les contributions comme celles ci-dessous ont été rédigées par des cercles citoyens. Elles vous sont suggérées comme lecture afin d'alimenter votre réflexion sur les enjeux et vous montrer la diversité des opinions, des théories et des tendances des membres de Québec solidaire. Vous pouvez utiliser ces textes comme point de départ et y réagir, ou alors écrire votre contribution en partant d'ailleurs.",
+			'titreCorps' => 'Dernières contributions',
+			'afficherEtape' => true,
+			'etape' => 1
+		);
+		$this->layout->AddVariables($layoutVariables);
+	}
+	
+	function ItemViewController() {
 		if (!$this->item['publier']) {
 			$this->LoadView('private');
 			return false;
 		}
 		$layoutVariables = array(
-			'surtitre' => 'Réfléchir',
+			'surtitre' => 'S’informer',
 			'titre' => 'Contribution',
 			'intro' => "Les contributions comme celle ci-dessous ont été rédigées par des cercles citoyens. Elles vous sont suggérées comme lecture afin d'alimenter votre réflexion sur les enjeux et vous montrer la diversité des opinions, des théories et des tendances des membres de Québec solidaire. Vous pouvez utiliser ces textes comme point de départ et y réagir, ou alors écrire votre contribution en partant d'ailleurs.",
 			'titreCorps' => $this->item['titre'],
