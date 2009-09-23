@@ -1,6 +1,1 @@
-- ajouter un item dans _paths
-	- path: contributions
-	- current: 1
-	- module: 7
-	- item: 0
-	- language: 'fr'
+- J'ai manuellement enlevé le foreign key du thème pour régler l'erreur fatale. Kludgy mais quick bugfix. À investiguer plus sérieusement dans Jam.
