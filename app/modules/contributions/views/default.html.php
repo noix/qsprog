@@ -1,16 +1,26 @@
-<? if ($this->items): ?>
-<dl>
-	<? foreach ($this->items as $item): ?>
-	<dt><?= a($item['path'], $item['titre']) ?></dt>
-	<dd>
-		<? if ($item['phase'] == 2): ?>
-		<p>
-			<?= $item['typeModification_string'] . (($item['typeModification'] == 1) ? ' à' : '') ?>
-			<?= ($item['typeModification'] == 4) ? '' : ' la perspective ' . e('strong', $item['perspective_numero']) ?></p>
-		<? endif; ?>
-		<p>par <?= $item['cercle'] ?></p>
-	</dd>
-	<? endforeach; ?>
-</dl>
-<? else: ?>
-<? endif; ?>
+<div class="sous-boite">
+	<? if ($this->items): ?>
+	<dl class="contributions">
+		<? foreach ($this->items as $item): ?>
+			<? if ($item['perspective'] != $previousPerspective): ?>
+				<? if($previousPerspective): ?>
+					</ul>
+				</dd>
+				<? endif; ?>
+			<dt><p><?= $item['perspective_numero'] ?></p></dt>
+			<dd>
+				<ul>
+			<? endif; ?>
+			<li>
+				<p class="titre"><?= a($item['path'], $item['titre']) ?></p>
+				<p class="auteur">par <?= $item['cercle'] ?></p>
+			</li>
+			<? $previousPerspective = $item['perspective'] ?>
+		<? endforeach; ?>
+		</ul>
+		</dd>
+	</dl>
+	<? else: ?>
+	<? endif; ?>
+</div>
+<? $commentaires->LoadView('commentaires'); ?>

@@ -556,7 +556,7 @@ div.couleur div.boite dl.contributions dt {
 		color: #4f494a;
 	}
 
-	div#ref-themes, div#ressources, div#telechargement {
+	div#ref-themes, div#ressources, div#telechargement, div#commentaires {
  		float: left;
  		width: 23.5em;
 		padding-right: 1.5em ;
@@ -777,6 +777,35 @@ div#contributions {
 	width: 48.5em;
 }
 div#contributions p {
+	margin-bottom: 1em;
+}
+
+dl.contributions dt {
+	float: left;
+	width: 3em;
+}
+
+dl.contributions dd {
+	margin-left: 4em;
+}
+
+dl.contributions p.titre {
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
+dl.contributions p.auteur {
+	font-size: 0.95em;
+	margin-bottom: 1em;
+	line-height: 1.8em;
+}
+
+div#commentaires a {
+	font-weight: bold;
+}
+
+div#commentaires p.auteur {
+	font-size: 0.95em;
 	margin-bottom: 1em;
 }
 
