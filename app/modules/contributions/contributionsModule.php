@@ -46,7 +46,8 @@ class ContributionsModule extends Module {
 					}
 				}
 			}
-
+			
+			/*
 			// S'assurer qu'il y a au moins 3 membres
 			$count = count($this->participants);
 			if (!$this->participants || $count < 3) {
@@ -58,6 +59,7 @@ class ContributionsModule extends Module {
 					}
 				}
 			}
+			*/
 
 			// S'assurer qu'il y a au moins un membre de QS
 			if ($this->participants) {
@@ -173,7 +175,7 @@ class ContributionsModule extends Module {
 			'where' => array(
 				'publier = TRUE'
 			),
-			'limit' => 8,
+			'limit' => 4,
 			'orderby' => 'modified DESC'
 		);
 		$this->FetchItems($queryParams);

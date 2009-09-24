@@ -11,7 +11,7 @@
 				<td<?= in_array('courriel', $form->missing) ? ' class="missing"' : '' ?>><?= $form->AutoItem('courriel') ?></td>
 			</tr>
 		</table>
-		<p class="expli">Votre cercle citoyen doit réunir un minimum de trois personnes, <span<?= $this->missingMember ? ' class="highlight"' : '' ?>>dont au moins un ou une membre de Québec solidaire</span>. Si votre cercle est composé de plus de six personnes, envoyez les noms supplémentaires à <script type="text/javascript">
+		<p class="expli">Votre cercle citoyen doit compter <span<?= $this->missingMember ? ' class="highlight"' : '' ?>>au moins un ou une membre de Québec solidaire</span>. Si votre cercle est composé de plus de six personnes, envoyez les noms supplémentaires à <script type="text/javascript">
 		//<![CDATA[
 
 		function hiveware_enkoder(){var i,j,x,y,x=
@@ -44,8 +44,8 @@
 			<? for ($i = 1; $i < 7; $i++): ?>
 			<tr>
 				<td<?= in_array('prenom'. $i, $form->missing) ? ' class="missing"' : '' ?>><?= $form->Field('prenom'. $i, 40) ?></td>
-				<td<?= in_array('prenom'. $i, $form->missing) ? ' class="missing"' : '' ?>><?= $form->Field('nom'. $i, 40) ?></td>
-				<td<?= in_array('prenom'. $i, $form->missing) ? ' class="missing"' : '' ?>><?= $form->Checkbox('membre'. $i) ?></td>
+				<td<?= in_array('nom'. $i, $form->missing) ? ' class="missing"' : '' ?>><?= $form->Field('nom'. $i, 40) ?></td>
+				<td<?= in_array('membre'. $i, $form->missing) ? ' class="missing"' : '' ?>><?= $form->Checkbox('membre'. $i) ?></td>
 			</tr>
 			<? endfor; ?>
 		</table>
