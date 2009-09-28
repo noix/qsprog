@@ -852,12 +852,13 @@ div#commentaires p.auteur {
 	font-size: 0.95em;
 	margin-bottom: 1em;
 }
-div#commentaires ul li p {
+div#commentaires ul li p,
+div#autresContributions dt {
 	margin-bottom: 0.3em;
 }
 div#autresContributions dl {
 	width: 23em;
-	line-height: 1.8em;
+	line-height: 1.42em;
 }
 div#autresContributions p {
 	margin-bottom: 1em;
