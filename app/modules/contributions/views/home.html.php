@@ -1,12 +1,14 @@
 <? if ($items): ?>
 <dl>
 <? foreach($items as $item): ?>
-	<dt><?= a($item['path'], $item['titre']) ?></dt>
-	<dd>
+	<dt>
 		<p class="type"><?= $this->strings['typesModificationFrontend'][$item['typeModification']] ?> <?= $item['perspective_numero'] ?></p>
+		<p class="titre brun"><?= a($item['path'], $item['titre']) ?></p>
+	</dt>
+	<dd>
 		<p class="auteur">par <?= $item['cercle'] ?></p>
 	</dd>
 <? endforeach; ?>
 </dl>
-<?= a('contributions', 'Voir toutes les contributions') ?>
+<?= a('contributions', 'Voir toutes les contributions', array('class' => 'tout')) ?>
 <? endif; ?>
