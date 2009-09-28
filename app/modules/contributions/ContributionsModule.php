@@ -134,6 +134,18 @@ class ContributionsModule extends Module {
 			'afficherEtape' => true,
 			'etape' => 1
 		);
+		
+		$autresContributions = Module::GetNewModule('contributions');
+		$queryParams = array(
+			'fields' => array('titre', 'cercle'),
+			'where' => array(
+				'perspective = '. $this->item['perspective'],
+				'contributions.id != '. $this->item['id']
+			),
+			'orderby' => 'contributions.modified DESC'
+		);
+		$autresContributions->FetchItems($queryParams);
+		$this->view['autresContributions'] = $autresContributions->items;
 		$this->layout->AddVariables($layoutVariables);
 	}
 	

@@ -565,7 +565,7 @@ div.couleur div.boite dl.contributions dt {
 		color: #4f494a;
 	}
 
-	div#ref-themes, div#ressources, div#telechargement, div#commentaires {
+	div#ref-themes, div#ressources, div#telechargement, div#commentaires, div#autresContributions {
  		float: left;
  		width: 23.5em;
 		padding-right: 1.5em ;
