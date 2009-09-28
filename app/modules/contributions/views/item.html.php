@@ -24,10 +24,19 @@
 <? endif; ?>
 <?= $contribution ?>
 </div>
-<div>
-	<h3>Autres contributions</h3>
-	<ul>
-		<li><?= a('contributions', 'Toutes les contributions') ?></li>
-	</ul>
+<div id="autresContributions">
+	<h3>Contributions reliées</h3>
+	<? if ($autresContributions): ?>
+	<dl>
+		<? foreach ($autresContributions as $contribution)?>
+		<dt><?= a($contribution['path'], $contribution['titre']) ?></dt>
+		<dd>
+			<p class="auteur"><?= $contribution['cercle'] ?></p>
+		</dd>
+	</dl>
+	<? else: ?>
+	<p class="vide">Aucune autre contribution n’a été publiée pour la perspective <?= $perspective_numero ?>.</p>
+	<? endif; ?>
+	<?= a('contributions', 'Toutes les contributions', array('class' => 'tout')) ?>
 </div>
 <? endif; ?>
