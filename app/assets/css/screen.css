@@ -496,9 +496,18 @@ div.couleur div.boite dl.contributions dt {
 		div.couleur div.boite dl dd {
 			font-size: 12px;
 			line-height: 16px;
-			margin: 0.4em 0 1.4em;
+			margin: 0.2em 0 1.4em;
 			color: #8DA4AA;
 		} 
+		div#big-bloc div.colonne dl dt p.type {
+			margin-bottom: 2px;
+			font-size: 11px;
+			color: #69878B;
+		}
+		div#big-bloc div.colonne a.tout {
+			font-weight: bold;
+			font-size: 11px;
+		}
 		
 	div.clear {
 		clear: both;
@@ -793,6 +802,37 @@ dl.contributions p.titre {
 	margin-bottom: 0;
 	font-weight: bold;
 }
+	a:visited {
+		color: #729fb7;
+		border-bottom: solid 1px #aabfcb;
+	}
+	 a:visited:hover {
+		color: #98adb9;
+		border-bottom: solid 1px #cce3ef;
+	}
+	a:hover {
+		color: #4096c3;
+	}
+	p.titre.brun a:hover {
+		color: #81bcdb;
+	}
+	p.titre.brun a:visited { /*pour l'accueil*/
+		color: #446c83;
+		border-bottom: solid 1px #4d7186
+	}
+	 p.titre.brun a:visited:hover { /*pour l'accueil*/
+		color: #517b92;
+		border-bottom: solid 1px #536c7c;
+	}
+
+.theme1 { background-color: #005a89; }
+.theme2 { background-color: #0073af; }
+.theme3 { background-color: #2a8abc; }
+.theme4 { background-color: #4da1cd; }
+.theme1.hover { background-color: #004b7c; }
+.theme2.hover { background-color: #00609f; }
+.theme3.hover { background-color: #1d73aa; }
+.theme4.hover { background-color: #3686ba; }
 
 dl.contributions p.auteur {
 	font-size: 0.95em;
@@ -1126,4 +1166,3 @@ span.highlight {
 	background-color: #FFF2B9;
 	
 }
-
