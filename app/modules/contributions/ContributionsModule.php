@@ -171,12 +171,12 @@ class ContributionsModule extends Module {
 
 	function HomeViewController() {
 		$queryParams = array(
-			'fields' => array('titre', 'cercle'),
+			'fields' => array('titre', 'cercle', 'typeModification', 'perspective'),
 			'where' => array(
 				'publier = TRUE'
 			),
 			'limit' => 4,
-			'orderby' => 'modified DESC'
+			'orderby' => 'contributions.modified DESC'
 		);
 		$this->FetchItems($queryParams);
 	}

@@ -24,4 +24,10 @@
 <? endif; ?>
 <?= $contribution ?>
 </div>
+<div>
+	<h3>Autres contributions</h3>
+	<ul>
+		<li><?= a('contributions', 'Toutes les contributions') ?></li>
+	</ul>
+</div>
 <? endif; ?>
