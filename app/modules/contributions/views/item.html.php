@@ -28,11 +28,12 @@
 	<h3>Contributions reliées</h3>
 	<? if ($autresContributions): ?>
 	<dl>
-		<? foreach ($autresContributions as $contribution)?>
+		<? foreach ($autresContributions as $contribution): ?>
 		<dt><?= a($contribution['path'], $contribution['titre']) ?></dt>
 		<dd>
 			<p class="auteur"><?= $contribution['cercle'] ?></p>
 		</dd>
+		<? endforeach; ?>
 	</dl>
 	<? else: ?>
 	<p class="vide">Aucune autre contribution n’a été publiée pour la perspective <?= $perspective_numero ?>.</p>

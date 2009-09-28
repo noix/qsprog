@@ -144,8 +144,7 @@ class ContributionsModule extends Module {
 			),
 			'orderby' => 'contributions.modified DESC'
 		);
-		$autresContributions->FetchItems($queryParams);
-		$this->view['autresContributions'] = $autresContributions->items;
+		$this->view['autresContributions'] = $autresContributions->FetchItems($queryParams);
 		$this->layout->AddVariables($layoutVariables);
 	}
 	
