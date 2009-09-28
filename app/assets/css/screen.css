@@ -504,7 +504,8 @@ div.couleur div.boite dl.contributions dt {
 			font-size: 11px;
 			color: #69878B;
 		}
-		div#big-bloc div.colonne a.tout {
+		div#big-bloc div.colonne a.tout,
+		a.tout {
 			font-weight: bold;
 			font-size: 11px;
 		}
@@ -570,6 +571,7 @@ div.couleur div.boite dl.contributions dt {
  		width: 23.5em;
 		padding-right: 1.5em ;
 	}
+
 		div#ref-themes ul.themes {
 			margin-top: 1em;
 		}
@@ -840,12 +842,24 @@ dl.contributions p.auteur {
 	line-height: 1.8em;
 }
 
+div#commentaires li {
+	margin-bottom:1em;
+}
 div#commentaires a {
 	font-weight: bold;
 }
-
 div#commentaires p.auteur {
 	font-size: 0.95em;
+	margin-bottom: 1em;
+}
+div#commentaires ul li p {
+	margin-bottom: 0.3em;
+}
+div#autresContributions dl {
+	width: 23em;
+	line-height: 1.8em;
+}
+div#autresContributions p {
 	margin-bottom: 1em;
 }
 
